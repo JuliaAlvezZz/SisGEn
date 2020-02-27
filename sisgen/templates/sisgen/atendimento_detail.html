@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+{% load crispy_forms_tags %}
+  <head>
+    <title> SisGEn </title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'sisgen/css/estilo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sisgen/css/estilo_registros1.css' %}">
+    <link rel="icon" href="{% static 'sisgen/img/icon.png' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'sisgen/img/icon.png' %}" type="image/x-icon" />
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+      <nav class="navbar navbar-expand-lg sticky-top" id="divmenu">
+        <a class="navbar-brand" href="#" id="logo"><img src="{% static 'sisgen/img/logosisgen.png' %}"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="navbarToggler" aria-expanded="false">
+          <span class="fa fa-bars fa-lg" style="color: #c0c0c0"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav" id="menu" style="margin: auto!important">
+            <li class="nav-item px-3">
+              <a class="nav-link" href="{% url "index"%}">Home</a>
+            </li>
+            <li class="nav-item dropdown px-3">
+              <a class="nav-link dropdown-toggle active" href="atendimento1.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Atendimento
+              </a>
+              <div class="dropdown-menu dd" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url "atendimento_new"%}">Registrar</a>
+                <a class="dropdown-item" href="{% url "atendimento_list"%}">Visualizar</a>
+              </div>
+            </li> 
+            <li class="nav-item dropdown px-3">
+              <a class="nav-link dropdown-toggle" href="paciente1.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pacientes
+              </a>
+              <div class="dropdown-menu dd" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url "paciente_new"%}">Registrar</a>
+                <a class="dropdown-item" href="{% url "paciente_list"%}">Visualizar</a>
+              </div>
+            </li> 
+            <li class="nav-item dropdown px-3">
+              <a class="nav-link dropdown-toggle" href="equipamento1.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Equipamentos
+              </a>
+              <div class="dropdown-menu dd" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url "equipamento_new"%}">Registrar</a>
+                  <a class="dropdown-item" href="{% url "equipamento_list"%}">Visualizar</a>
+              </div>
+            </li> 
+            <li class="nav-item dropdown px-3">
+              <a class="nav-link dropdown-toggle" href="vacina1.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Vacinas
+              </a>
+              <div class="dropdown-menu dd" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url "vacina_new"%}">Registrar</a>
+                <a class="dropdown-item" href="{% url "vacina_list"%}">Visualizar</a>
+              </div>
+            </li> 
+          </ul>
+          <script type="text/javascript">
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+          </script>
+          <a href="{% url 'alterar-senha'%}" id="login" data-toggle="tooltip" data-placement="bottom" title="Alterar Senha"><span class="fa fa-cogs mx-1"></span></a>
+          <a href="{% url 'logout'%}" id="login" data-toggle="tooltip" data-placement="bottom" title="Logout"><span class="fa fa-sign-out mx-1w"></span></a>
+        </div> 
+      </nav>
+      <div style="width: 100%; height: 5px; background-color: #50c878; position: fixed; z-index: 1;"></div>
+
+      <div class="container text-center mt-2 mb-5"><br/>    
+        <h2>Detalhes</h2><br/>
+          <h4>Data/Hora: {{object.dataHora}}</h4><br/>
+          <h4>Paciente: {{object.paciente}}</h4><br/>
+          <h4>Procedimento(s) realizado(s): {% for procedimento in object.procedimento.all %} {{procedimento}} / {% endfor %}</h4><br/>
+          <h4>Vacinação: {% for vacina in object.vacinacao.all %} {{vacina}} / {% endfor %}</h4><br/>
+          <h4 style="word-wrap:break-word">Descrição: {{object.descricaoAtendimento}}</h4><br/>
+          <a  href="{% url "atendimento_list"%}" class="btn btn-secondary mx-4" name="btnVisualizar" id="btnVisualizar">Visualizar Atendimentos</a> 
+      </div><br/>
+
+      <div style="width: 100%; height: 5px; background-color: #50c878; position: fixed; bottom: 50px;"></div>
+      <footer class="footer fixed-bottom p-2">
+        <div class="container-fluid text-center">
+          <p>Desenvolvido por </p> <img src="{% static 'sisgen/img/logo.png' %}"/>
+        </div>
+      </footer>
+    {% else %}
+      <script type="text/javascript">
+        window.location.href='{% url "login"%}';
+      </script>
+    {% endif %}
+  </body>
+  </body>
+</html>

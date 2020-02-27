@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@font-face{
+  font-family: 'Gotham';
+  src: url("../fontes/gotham.otf");
+}
+
+body{
+  font-family: 'Gotham';
+  background-color: #191919;
+}
+
+body div#divlogin{
+	font-size: 14pt;
+	color: #191919;
+	width: 400px;
+	height: auto;
+	padding: 40px;
+	padding: 40px;
+	background-color: #a8e6bd;
+	border-radius: 20px;
+}
+
+body img#logo{
+	width: 100%;
+	height: auto;
+}

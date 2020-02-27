@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+@font-face{
+  font-family: 'Gotham';
+  src: url("../fontes/gotham.otf");
+}
+
+body{
+  font-family: 'Gotham';
+}
+
+ 
+body nav#divmenu {
+  background-color: #202020;
+}
+
+
+body nav#divmenu div a#login{
+  font-size: 14pt;
+  color: #c0c0c0;
+  position: relative;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+body nav#divmenu div a#login:hover{
+  color: #50c878;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body nav#divmenu div a#login:active{
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+body nav#divmenu a#logo img{
+   width: 190px;
+}
+
+body nav#divmenu div ul li{
+   margin-right: 5px;
+   font-size: 14pt;
+}
+
+body nav#divmenu div ul#menu li a{
+  color: #c0c0c0;
+  border-radius: 5px;
+}
+
+body nav#divmenu div ul#menu li a.active{
+  background-color: black;
+}
+
+body nav#divmenu div ul#menu li a:hover{
+  color: black;
+  background-color: #50c878;
+ }
+
+body nav#divmenu div ul#menu li a:active{
+  color: #c0c0c0;
+  background-color: black;
+}
+
+body nav#divmenu div ul#menu li div.dd{
+  background-color: #202020;
+  border: 1px solid #50c878;
+}
+
+body nav#divmenu div ul#menu div.dd a{
+  background-color: #202020;
+  text-decoration: none;
+  font-size: 14pt;
+  color: #c0c0c0;
+}
+
+body nav#divmenu div ul#menu li div.dd a.active{
+  color: #c0c0c0;
+  background-color: black;
+}
+
+body nav#divmenu div ul#menu li div.dd a:hover{
+  color: #50c878;
+  background-color: #202020;
+}
+
+body nav#divmenu div ul#menu li div.dd a:active{
+  color: #c0c0c0;
+  background-color: black;
+}
+
+body div div div.divmenu{
+  padding: 20px;
+  font-size: 20pt;
+  background-color: rgba(200,200,200,0.5);
+  border: 1px solid #50c878;
+  border-radius: 60px;
+}
+
+body div div div.divmenu b{
+  color: black;
+}
+
+body div div div.divmenu a{
+  color: black;
+}
+
+body div div div p.til{
+  font-weight: bold; 
+}
+
+body div div div a:hover{
+  color: #1e7a3d;
+  text-decoration: none;
+}
+
+body div div div a:active{
+  color: black;
+  text-decoration: none;
+}
+
+footer{
+  color: #c0c0c0;
+  background-color: #202020;
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+
+footer div{
+  font-size: 12pt;
+}
+
+footer div p{
+  display: inline-block;
+}
+
+footer div img{
+  width: 100px;
+}
